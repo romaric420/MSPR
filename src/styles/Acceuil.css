@@ -12,6 +12,7 @@ body {
 	padding: 20px;
 }
 
+/* Navbar */
 .navbar {
 	width: 100%;
 	display: flex;
@@ -68,67 +69,122 @@ body {
 	transform: scale(1.05);
 }
 
-/* Main content area with two blocks */
+/* Main content */
 .main-content {
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
 	margin-top: 120px;
-	/* Pour compenser la navbar fixe */
 	width: 100%;
 	gap: 20px;
-	/* Espacement entre les blocs */
 }
 
+/* Left & Right blocks */
 .left-block,
 .right-block {
 	width: 45%;
 	padding: 40px;
 	box-sizing: border-box;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 500px;
-	/* Augmenter la hauteur des blocs */
+	flex-direction: column;
 	border-radius: 10px;
 	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-	/* Ajout de l'ombre */
+	height: 500px;
+	/* même hauteur */
 }
 
+/* LEFT BLOCK */
 .left-block {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	justify-content: space-between;
 }
 
+/* Subsections dans left-block */
+.left-top,
+.left-bottom {
+	background-color: rgba(255, 255, 255, 0.9);
+	border-radius: 10px;
+	padding: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.left-top:last-child,
+.left-bottom:last-child {
+	margin-bottom: 0;
+}
+
+/* Image Upload Input */
 .image-upload input {
 	padding: 12px;
 	font-size: 16px;
-	border: 2px solid #4CAF50;
-	/* Bordure verte */
+	border: 2px solid #31C48D;
 	border-radius: 5px;
-	margin-bottom: 10px;
+	margin-top: 10px;
 	width: 100%;
 	max-width: 300px;
 	background-color: #f0f0f0;
-	/* Fond gris clair pour l'input */
 	transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .image-upload input:hover {
-	border-color: #45a049;
-	/* Changer la bordure en vert au survol */
+	border-color: #31C48D;
 	background-color: #e0e0e0;
-	/* Légère variation de fond au survol */
 }
 
+/* Camera Button - Vert */
+.camera-button {
+	padding: 12px 20px;
+	background-color: #31C48D;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+	margin-top: 10px;
+}
+
+.camera-button:hover {
+	background-color: #29af7d;
+	transform: scale(1.05);
+}
+
+/* Take Photo Button */
+.take-photo-button {
+	margin-top: 10px;
+	padding: 10px 18px;
+	background-color: #31C48D;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.take-photo-button:hover {
+	background-color: #29af7d;
+	transform: scale(1.05);
+}
+
+/* Camera Video Feed */
+.camera-feed {
+	margin-top: 15px;
+	width: 100%;
+	max-width: 300px;
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* RIGHT BLOCK */
 .right-block {
 	background-color: #f4f4f4;
 	border: 1px solid #ccc;
-	border-radius: 10px;
+	align-items: center;
+	justify-content: center;
 }
 
 .right-block img {
@@ -171,20 +227,21 @@ body {
 	font-weight: bold;
 }
 
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 768px) {
 	.main-content {
 		flex-direction: column;
+		align-items: center;
 	}
 
 	.left-block,
 	.right-block {
-		width: 80%;
+		width: 90%;
 		margin-bottom: 20px;
 	}
 
 	.image-upload input {
-		max-width: 80%;
+		max-width: 90%;
 	}
 }
 
@@ -206,9 +263,11 @@ body {
 	.left-block,
 	.right-block {
 		width: 100%;
+		padding: 20px;
 	}
 
-	.image-upload input {
+	.image-upload input,
+	.camera-feed {
 		width: 100%;
 	}
 
@@ -218,5 +277,74 @@ body {
 
 	.result {
 		font-size: 14px;
+	}
+}
+
+/* Dashboard section */
+.dashboard-container {
+	margin-top: 60px;
+	padding: 50px 30px;
+	background-color: #f9f9f9;
+	border-top: 2px solid #ddd;
+}
+
+.dashboard-title {
+	text-align: center;
+	font-size: 32px;
+	color: #333;
+	margin-bottom: 40px;
+	font-weight: bold;
+}
+
+.stats-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 30px;
+}
+
+.stat-card {
+	background-color: white;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 25px;
+	min-width: 240px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+	transform: scale(1.03);
+}
+
+.stat-card h3 {
+	color: #31C48D;
+	margin-bottom: 12px;
+}
+
+.stat-card p {
+	font-size: 24px;
+	font-weight: bold;
+	color: #222;
+}
+
+.stat-card ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+.stat-card li {
+	font-size: 16px;
+	margin-bottom: 5px;
+	color: #555;
+}
+
+@media (max-width: 768px) {
+	.stats-grid {
+		flex-direction: column;
+		align-items: center;
 	}
 }

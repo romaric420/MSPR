@@ -1,87 +1,174 @@
-h1{
-	text-transform: uppercase;
-	text-align: center;
-	color:#4158d0;
-	font-size: 22px;
+body {
+	margin: 0;
+	font-family: 'Arial', sans-serif;
+	height: 100%;
 }
-.wrapper2{
-	width: 450px;
-	background: #fff;
-	padding: 30px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-	margin-top: -20rem;
-}
-.wrapper2 .input-data{
-	height: 40px;
-	width: 100%;
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: url('../assets/logo_vert.png ');
+	background-size: cover;
 	position: relative;
 }
-.wrapper2 .input-data input{
-	height: 100%;
-	width: 100%;
-	border: none;
-	font-size: 17px;
-	border-bottom: 2px solid silver;
-}
-.input-data input:focus~label,
-.input-data input:valid~label{
-	transform: translateY(-20px);
-	font-size: 15px;
-	color: #4158d0;
-}
-.wrapper2 .input-data label{
+
+.overlay {
 	position: absolute;
-	bottom: 10px;
+	top: 0;
 	left: 0;
-	color: grey;
-	pointer-events: none;
-	transition: all 0.3s ease;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
-.wrapper2 .input-data .underline{
+
+/* Bouton Accueil */
+.btn-retour {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	background-color: #ffffffcc;
+	color: #31C48D;
+	border: none;
+	padding: 10px 18px;
+	border-radius: 5px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	z-index: 100;
+}
+
+.btn-retour:hover {
+	background-color: #ffffffee;
+	transform: scale(1.05);
+}
+
+.login-form {
+	background: #fff;
+	padding: 30px;
+	width: 100%;
+	max-width: 450px;
+	border-radius: 20px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	z-index: 10;
+}
+
+h1 {
+	font-size: 32px;
+	color: #31C48D;
+	margin-bottom: 25px;
+}
+
+.input-data {
+	position: relative;
+	margin-bottom: 40px;
+	width: 100%;
+	text-align: left;
+}
+
+.input-data input {
+	width: 95%;
+	padding: 12px 10px;
+	font-size: 16px;
+	border: none;
+	border-bottom: 2px solid #ccc;
+	outline: none;
+	background: transparent;
+}
+
+.input-data input:focus {
+	transform: scale(1.02);
+}
+
+.input-data label {
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 14px;
+	color: #aaa;
+	pointer-events: none;
+	transition: 0.3s ease all;
+}
+
+.input-data input:focus~label,
+.input-data input:valid~label {
+	top: 5px;
+	font-size: 12px;
+	color: #31C48D;
+}
+
+.input-data .underline {
 	position: absolute;
 	bottom: 0;
+	left: 0;
 	height: 2px;
+	width: 0;
+	background: #31C48D;
+	transition: width 0.3s ease;
+}
+
+.input-data input:focus~.underline {
 	width: 100%;
 }
-.input-data .underline:before{
-	position: absolute;
-	content: "";
-	height: 100%;
+
+.error {
+	color: red;
+	font-size: 13px;
+	margin-top: 5px;
+}
+
+/* Bouton principal */
+.btn button {
+	background-color: #31C48D;
+	color: white;
 	width: 100%;
-	background: #4158d0;
-	transform: scaleX(0);
-	transition: transform 0.3s ease;
+	padding: 15px;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-.input-data input:focus~.underline:before,
-.input-data input:valid~.underline:before{
-	transform: scaleX(1);
+
+.btn button:hover {
+	background-color: #28ab75;
+	transform: scale(1.05);
 }
-.remember{
-	margin-left: 10px;
-}
-.btn button{
-	font-family: sans-serif;
+
+.success {
+	color: #31C48D;
+	margin-top: 15px;
 	font-weight: bold;
-	margin-top: 20px;
-    width: 100%;
-    height:50px ;
-    background-color: #4158d0;
-    color: #fff;
-    cursor: pointer;
-    text-transform: uppercase;
-    padding: 10px;
-    border-radius: 20px;
-    border: none;
-    box-shadow:0 0 10px rgba(0, 0, 0, 1.0);
-	-webkit-transition-duration:0.3s;
-	transition-duration: 0.3;
-	-webkit-transition-property:box-shadow,transform;
-	transition-property: box-shadow,transform;
+	font-size: 16px;
 }
 
-.btn button:hover,.btn button:focus,.btn button:active{
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-	-webkit-transform:scale(1.1);
-	transform:scale(1.1);
+/* Responsive */
+@media (max-width: 768px) {
+	.login-form {
+		padding: 25px;
+		max-width: 90%;
+	}
+
+	h1 {
+		font-size: 28px;
+	}
 }
 
+@media (max-width: 480px) {
+	h1 {
+		font-size: 24px;
+	}
+
+	.btn button {
+		font-size: 16px;
+		padding: 12px;
+	}
+}
